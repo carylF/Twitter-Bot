@@ -17,8 +17,17 @@ class TwitterAPI:
         self.api.update_status(status=message)
 
     def mention_tweet(self, message, account):
-        tweet = message.format(account)
+        tweet = message + ' @' + account
         self.api.update_status(status=tweet)
+
+    def autoreply(self):
+        mentions = self.api.mentions_timeline(count=1)
+        for mention in mentions:
+            print mention.text
+            self.mention_tweet(mention.text,account)
+
+            print mention.user.screen_name
+
 
 
 if __name__ == "__main__":
