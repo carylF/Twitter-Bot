@@ -1,4 +1,7 @@
-import tweepy
+import tweepy, random
+
+
+team_list = ['rd_tmp', 'te4mn00bs', 'team_jp_', 'RDH4CK4TH0N']
 
 class TwitterAPI:
     def __init__(self):
@@ -13,6 +16,12 @@ class TwitterAPI:
     def tweet(self, message):
         self.api.update_status(status=message)
 
+    def mention_tweet(self, message, account):
+        tweet = message.format(account)
+        self.api.update_status(status=tweet)
+
+
 if __name__ == "__main__":
     twitter = TwitterAPI()
-    twitter.tweet("Im a real bot now! @RDH4CK4TH0N")
+    for value in team_list:
+        twitter.mention_tweet("Do you even tweet @{0}", random.choice(team_list))
