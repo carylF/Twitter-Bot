@@ -1,7 +1,7 @@
 import tweepy, random
 
 
-team_list = ['rd_tmp', 'te4mn00bs', 'team_jp_', 'RDH4CK4TH0N']
+team_list = ['rd_tmp', 'te4mn00bs', 'team_jp_', 'RDH4CK4TH0N', 'rdottawa']
 
 class TwitterAPI:
     def __init__(self):
@@ -23,8 +23,8 @@ class TwitterAPI:
     def autoreply(self):
         mentions = self.api.mentions_timeline(count=1)
         for mention in mentions:
-            print mention.text
-            self.mention_tweet(mention.text,account)
+            print mention.user
+            # self.mention_tweet(mention.text,account)
 
             print mention.user.screen_name
 
@@ -33,4 +33,4 @@ class TwitterAPI:
 if __name__ == "__main__":
     twitter = TwitterAPI()
     for value in team_list:
-        twitter.mention_tweet("Do you even tweet @{0}", random.choice(team_list))
+        twitter.mention_tweet("Do you even tweet!? Build #4.", value)
