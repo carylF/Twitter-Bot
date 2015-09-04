@@ -28,6 +28,10 @@ class TwitterAPI:
 
             print mention.user.screen_name
 
+    #Retweet function
+    def retweet(self,message,account):
+        tweet= "RT: " + account
+        self.api.update_status(status=tweet)
 
 
 if __name__ == "__main__":
